@@ -78,7 +78,7 @@ public interface ordersController {
             consumes = "application/json"
     )
     @CrossOrigin
-    Order createOrderDetails(CreateOrderRequest request);
+    ResponseEntity<Order> createOrderDetails(@RequestBody CreateOrderRequest request);
 
     @Operation(
             summary="saveOrderDetails",

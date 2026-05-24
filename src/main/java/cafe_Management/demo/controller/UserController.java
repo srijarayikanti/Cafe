@@ -25,7 +25,7 @@ public interface UserController {
     )
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/login/saveUserDetails",
+            value = "/login/authenticate",
             produces = "application/json",
             consumes = "application/json"
     )

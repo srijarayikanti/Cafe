@@ -4,6 +4,7 @@ import cafe_Management.demo.jwt.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -19,14 +20,13 @@ public class securityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> {})   // ✅ ADD THIS LINE
+                .cors(cors -> {})
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login/**").permitAll() // allow login
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll() // swagger
-                        .anyRequest().authenticated() // 🔒 protect all other APIs
+                        .requestMatchers("/login/**").permitAll()  // ✅ Login doesn't need JWT
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-ui/index.html").permitAll() // swagger
+                        .anyRequest().permitAll()  // ✅ All other APIs permit all
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-
 
         return http.build();
     }

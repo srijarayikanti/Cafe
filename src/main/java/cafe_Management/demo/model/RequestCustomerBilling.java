@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 @Data
 public class RequestCustomerBilling {
-    private int billingId;
+    //private int billingId;
     private int customerId;
     private double totalAmount;
     private String paymentMethod; // (Cash, Card, Mobile Payment)

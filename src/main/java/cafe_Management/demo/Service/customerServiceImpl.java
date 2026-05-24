@@ -74,7 +74,7 @@ public class customerServiceImpl implements  customerService {
 
     @Override
     public ResponseEntity<?> fetchCustomerDetailsByEmailId(String email) {
-        List<Customer> customer = customerRepository.findByEmail(email);
+        Customer customer = customerRepository.findByEmail(email);
         if (customer == null) {
             return ResponseEntity.notFound().build();
         }

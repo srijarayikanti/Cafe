@@ -31,7 +31,7 @@ public class ordersControllerImpl implements ordersController {
     }
 
     @Override
-    public Order createOrderDetails(CreateOrderRequest request){
+    public ResponseEntity<Order> createOrderDetails(CreateOrderRequest request){
         return ordersService.createOrder(request);
     }
 

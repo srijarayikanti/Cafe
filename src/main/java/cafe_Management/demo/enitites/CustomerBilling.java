@@ -1,9 +1,6 @@
 package cafe_Management.demo.enitites;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -16,6 +13,7 @@ import java.time.LocalTime;
 public class CustomerBilling {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BillingId")
     private Integer  billingId;
 

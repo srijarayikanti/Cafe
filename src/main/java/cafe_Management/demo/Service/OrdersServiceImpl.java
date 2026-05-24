@@ -76,7 +76,7 @@ public class OrdersServiceImpl implements ordersService{
     }
 
     @Override
-    public Order createOrder(CreateOrderRequest request) {
+    public ResponseEntity<Order> createOrder(CreateOrderRequest request) {
 
         // 1. Fetch customer
         Customer customer = customerRepository.findById(request.getCustomerId())
@@ -116,7 +116,8 @@ public class OrdersServiceImpl implements ordersService{
         order.setTotalAmount(totalAmount);
 
         // 5. Save (cascade saves items)
-        return orderRepository.save(order);
+        orderRepository.save(order);
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 
     @Override

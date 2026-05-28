@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 public interface kTeamController {
     @Operation(
-            summary="Fetch all orders",
+            summary="saveKTeamDetails",
             operationId="saveKTeamDetails",
             tags="KitchenTeam",
             responses = {
@@ -26,7 +26,7 @@ public interface kTeamController {
             }
     )
     @RequestMapping(
-            method = RequestMethod.GET,
+            method = RequestMethod.POST,
             value = "/customer/saveKTeamDetails",
             produces = "application/json",
             consumes = "application/json"
@@ -35,7 +35,7 @@ public interface kTeamController {
     ResponseEntity<?> saveKTeamDetails(@RequestBody KitchenTeam request);
 
     @Operation(
-            summary="Fetch all orders",
+            summary="Fetch all Kitchen Team details",
             operationId="fetchKTeamDetails",
             tags="KitchenTeam",
             responses = {
